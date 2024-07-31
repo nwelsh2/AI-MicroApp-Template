@@ -1,11 +1,4 @@
-},
-        "phase_instructions": "",
-        "user_prompt": "My name is {name}. I was born on {month} {day}, {year}. Please provide me my zodiac symbol, and give a short horoscope for the day, according to the {system} astrology system.",
-        "ai_response": True,
-        "allow_skip": True,
-        "show_prompt": True,
-        #"read_only_prompt": False
-    }APP_TITLE = "Zodiac Symbol"
+APP_TITLE = "Zodiac Symbol"
 APP_INTRO = """This is a demonstration app that determines a users zodiac symbol based on their birth month and date. 
 """
 
@@ -23,7 +16,41 @@ HTML_BUTTON = {
 
 SYSTEM_PROMPT = """You are an expert in zodiac symbols. You know the accurate zodiac symbol based on a person's birth month and date, and you """
 
-},
+PHASES = {
+    "name": {
+        "name": "User Details",
+        "fields": {
+            "name": {
+                "type": "text_input",
+                "label": """What is your first name?""",
+                "helper": "First name only, please",
+                "value": "",
+            },
+            "month": {
+                "type": "radio",
+                "label": """What is your birth month?""",
+                "options": ["January","February","March","April","May","June","July","August","September","October","November","December"],
+            },
+            "day": {
+                "type": "number_input",
+                "label": """What is your birth day?""",
+                "min_value": 1,
+                "max_value":31
+            },
+            "year": {
+                "type": "number_input",
+                "label": """What is your birth year?""",
+                "min_value": 1900,
+                "max_value":2020
+            },
+            "system": {
+                "type": "selectbox",
+                "label": """Astrology System""",
+                "options": ["Western","Chinese"],
+            },
+
+
+        },
         "phase_instructions": "",
         "user_prompt": "My name is {name}. I was born on {month} {day}, {year}. Please provide me my zodiac symbol, and give a short horoscope for the day, according to the {system} astrology system.",
         "ai_response": True,
@@ -31,6 +58,9 @@ SYSTEM_PROMPT = """You are an expert in zodiac symbols. You know the accurate zo
         "show_prompt": True,
         #"read_only_prompt": False
     }
+
+
+}
 
 def prompt_conditionals(prompt, user_input, phase_name=None):
     #TO-DO: This is a hacky way to make prompts conditional that requires the user to know a lot of python and get the phase and field names exactly right. Future task to improve it. 
@@ -51,8 +81,8 @@ LLM_CONFIGURATIONS = {
         "presence_penalty": 0,
         "temperature": 1,
         "top_p": 1,
-        "price_input_token_1M":0.150,
-        "price_output_token_1M":.600
+        "price_input_token_1M":0.50,
+        "price_output_token_1M":1.50
     },
     "gpt-4-turbo": {
         "model": "gpt-4-turbo",
