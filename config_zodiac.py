@@ -1,4 +1,11 @@
-APP_TITLE = "Zodiac Symbol"
+},
+        "phase_instructions": "",
+        "user_prompt": "My name is {name}. I was born on {month} {day}, {year}. Please provide me my zodiac symbol, and give a short horoscope for the day, according to the {system} astrology system.",
+        "ai_response": True,
+        "allow_skip": True,
+        "show_prompt": True,
+        #"read_only_prompt": False
+    }APP_TITLE = "Zodiac Symbol"
 APP_INTRO = """This is a demonstration app that determines a users zodiac symbol based on their birth month and date. 
 """
 
